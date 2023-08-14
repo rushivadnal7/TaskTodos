@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo's</title>
+    <link rel="stylesheet" href="todo.css">
+    <script type="module" src="todo.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    
+    <body>
+        <header>
+            <div class="logo">
+            <img src="/imgs/todolist_logo.png" alt="">
+        </div>
+        <div class="navbar">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#home">Home</a></li>
+                <li class="nav-item"><a href="#About">About</a></li>
+                <li class="nav-item"><a href="#Contact">Contact</a></li>
+            </ul>
+        </div>
+        
+        <button class="all-todo-btn"> <a href="alltodolist.html">All <br> Todos</a></button>
+        <div class="icon">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="respNavbar">
+            <div class="icon sidebaricon">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="nav-list-resp">
+                <li class="nav-item-resp"><a href="#home">Home</a></li>
+                <li class="nav-item-resp"><a href="#About">About</a></li>
+                <li class="nav-item-resp"><a href="#Contact">Contact</a></li>
+            </ul>
+        </div>
+        
+    </header>
+
+    <section id="home" class="main">
+        <div class="main-left">
+            <p class="left-p">
+                Create New Task
+            </p>
+            <button class="createbtn">create</button>
+        </div>
+        <div class="main-right">
+            <p class="right-p">
+                Delete Task
+            </p>
+            <button class="deletebtn-main">delete</button>
+        </div>
+    </section>
+
+    <div class="addTask-popup">
+        <div class="input-field addfield">
+
+            <input id="task-input" type="text" placeholder="Task">
+            <input id="date-input" type="datetime-local" name="" id="">
+            <button type="button" class="addbtn">Add</button>
+
+        </div>
+    </div>
+    <div class="delTask-popup">
+        <div class="input-field">
+            <form action="">
+                <div class="data">
+                </div>
+                <button type="button" class="popup-delbtn">Delete</button>
+            </form>
+        </div>
+    </div>
+
+    <section id="About" class="about-section">
+
+        <div class="bigger-circle"></div>
+        <div class="small-circle">
+        </div>
+        <div class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus reiciendis sint ipsam
+            labore aperiam quasi quia atque rerum porro iure, hic saepe voluptates modi pariatur adipisci voluptas
+            corporis? Ratione asperiores totam obcaecati in dolor atque porro perferendis iusto, sapiente ullam
+            temporibus, autem adipisci quia nulla laudantium hic laboriosam laborum, fuga doloribus. Amet, saepe!
+            Excepturi eum labore repellat voluptates aliquam soluta, provident quaerat quidem magnam consectetur maiores
+            repudiandae, aut nam suscipit ut, expedita animi. Repellendus eaque doloribus minima consequuntur facere
+            quibusdam voluptatibus natus, vel reiciendis quod enim voluptas molestias, cumque nisi quisquam nam fugit
+            dolor labore iusto quis cupiditate! Rem perspiciatis blanditiis libero dolor tenetur? Molestiae natus magnam
+            saepe.</div>
+    </section>
+
+    <section id="Contact" class="contact-section">
+        <div class="map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120512.3262601917!2d72.9790686442291!3d19.281922823991366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7bd101e824aa3%3A0x5970a572c6d931ae!2sBhiwandi%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1691868362647!5m2!1sen!2sin"
+                 allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <form class="contact-input">
+            <input id="email_input" type="text" placeholder="Email">
+            <input id="feedback_input" type="text" placeholder="Feedback">
+            <button id="submit_button">Submit</button>
+
+        </form>
+       
+    </section>
+
+</body>
+
+</html>

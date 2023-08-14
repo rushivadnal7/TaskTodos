@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All ToDo's</title>
+</head>
+
+<style>
+    * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    header {
+        display: flex;
+        background-color: #D9D9D9;
+        height: 90px;
+        align-items: center;
+        width: 100%;
+        /* min-width: 750px; */
+        justify-content: space-between;
+    }
+
+    .logo {
+        position: relative;
+        left: 3%;
+    }
+
+    .logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .nav-list {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        list-style: none;
+        width: 200px;
+        max-width: 250px;
+    }
+
+    .nav-item {
+        margin: 30px;
+        cursor: pointer;
+        font-weight: bolder;
+        position: relative;
+        text-decoration: none;
+        width: fit-content;
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: capitalize;
+        margin: auto;
+        /* right: 45%; */
+    }
+
+    .nav-item a {
+        text-decoration: none;
+        color: black;
+
+    }
+
+
+
+    .nav-item a::after {
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 0%;
+        content: '';
+        background: #D84314;
+        height: 1px;
+    }
+
+    .nav-item a:hover {
+        color: #D84314;
+        transition: all 0.5s;
+    }
+
+    .nav-item a:hover:after {
+        width: 100%;
+        transition: all 0.7s;
+    }
+
+    .container {
+        /* width: 100vh; */
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .title {
+        position: relative;
+        margin: 20px auto;
+        font-weight: bolder;
+        font-size: larger;
+        width: fit-content;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .tasks {
+        /* width: 500px; */
+        margin: 10px 40px;
+        background-color: #D9D9D9;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    .tasks h2 {
+        margin: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .taskitem {
+        height: 300px;
+        overflow-y: scroll;
+        margin: 10px;
+    }
+
+    .item {
+        margin: 20px;
+        font-size: large;
+        font-weight: bold;
+        background-color: #D84314;
+        padding: 10px;
+        border-radius: 10px;
+        color: #D9D9D9;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    @media (max-width:745px) {
+        .container {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+    }
+</style>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="/imgs/todolist_logo.png" alt="">
+        </div>
+        <div class="home-ink navbar nav-list nav-item"> <a href="/todolist.html">home </a></div>
+    </header>
+    <div class="title"><i>All Tasks To Do</i></div>
+    <div class="container">
+        <div class="tasks">
+            <h2>Today's task</h2>
+            <div class="taskitem">
+
+            </div>
+        </div>
+        <div class="tasks">
+            <h2>Upcoming days task</h2>
+            <div class="taskitem taskitem2">
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script type="module">
+        function data() {
+            const taskArray = JSON.parse(localStorage.getItem("Tasks")) || []
+
+            if (taskArray.length === 0) {
+                return alert("No Task Added!!")
+            }
+            let dateval;
+            let taskString;
+
+            let currentdate = new Date()
+            let stringedDate = JSON.stringify(currentdate).slice(1, 11)
+
+            let newtaskbox = ""
+
+            let checkbox = taskArray.map(task => {
+                taskString = JSON.stringify(`Task - ${task.task} | ${task.date_time}`);
+                const stringLength = taskString.length - 1
+                let slicedtask = taskString.slice(1, stringLength)
+                let startpoint = 0; let endpoint = 0;
+                for (let i = 0; i < slicedtask.length; i++) {
+                    if (slicedtask[i] == "|") {
+                        startpoint = i
+                    }
+                    if (slicedtask[i] == ">") {
+                        endpoint = i
+                    }
+                }
+                dateval = slicedtask.slice(startpoint + 1, endpoint).trim()
+
+                let taskdate = new Date(dateval)
+                console.log()
+                console.log();
+
+
+                // if(dateval.slice(8,10)  < stringedDate.slice(8,10)){
+
+                //     console.log(taskArray.splice(1,1))
+                //     console.log("lets delete this task " + task.task + task.date_time)
+                // }
+                if (dateval != stringedDate) {
+                    newtaskbox += ` <div class="item">${slicedtask}</div> `;
+                    document.querySelector('.taskitem2').innerHTML = newtaskbox
+                }
+                else {
+                    return ` <div class="item">${slicedtask} </div>  `
+                }
+
+
+            }).join("")
+
+            document.querySelector('.taskitem').innerHTML = checkbox;
+        }
+
+        data()
+    </script>
+</body>
+</html>
